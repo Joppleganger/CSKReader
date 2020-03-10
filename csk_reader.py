@@ -36,7 +36,7 @@ if f'{FILENAME}.csv' not in os.listdir('.'):
         csv_string = f'{csv_string}{line}'
 
     sensor_df = pd.read_csv(StringIO(csv_string), delimiter='\t')
-    sensor_df.to_csv(f'{FILENAME}.csv')
+    sensor_df.to_csv(f'{FILENAME}.csv', index=None)
 
 sensor_df = pd.read_csv(filepath_or_buffer=f'{FILENAME}.csv')
 number_of_rows = sensor_df.shape[0]
@@ -88,4 +88,4 @@ for val, item in millis_values_split.items():
     for index, key in enumerate(pre_csv.keys()):
         pre_csv[key].append(relevant_info[index])
     analysis_csv = pd.DataFrame(data=pre_csv)
-    analysis_csv.to_csv('analysis.csv', index=None)
+    analysis_csv.to_csv(f'{FILENAME} (analysis).csv', index=None)
