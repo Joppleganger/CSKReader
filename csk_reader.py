@@ -80,11 +80,12 @@ pre_csv = {
     'Mean ms': [],
     'STD ms': [],
     'Min ms': [],
-    'Max ms': []
+    'Max ms': [],
+    'Span ms': []
 }
 for val, item in millis_values_split.items():
-    relevant_info = [val, np.mean(item), np.std(item), min(item), max(item)]
+    relevant_info = [val, np.mean(item), np.std(item), min(item), max(item), max(item) - min(item)]
     for index, key in enumerate(pre_csv.keys()):
         pre_csv[key].append(relevant_info[index])
     analysis_csv = pd.DataFrame(data=pre_csv)
-    analysis_csv.to_csv('analysis.csv')
+    analysis_csv.to_csv('analysis.csv', index=None)
